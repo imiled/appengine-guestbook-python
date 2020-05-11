@@ -1,0 +1,23 @@
+https://cloud.google.com/shell/docs/using-web-preview
+
+Starting the web application
+You can run any web application that listens to HTTP requests on the Cloud Shell virtual machine, including the App Engine development server. The web application must listen for HTTP requests on ports within the permitted range 2000 to 65000. These ports are only available to the secure Cloud Shell proxy service, which restricts access over HTTPS to your user account only.
+
+SimpleHTTPServer example
+To start a simple Python HTTP server from the Cloud Shell command prompt:
+
+cd `mktemp -d` \
+    && echo '<html><body>Hello World</body></html>' >./index.html \
+    && python -m SimpleHTTPServer 8080
+
+App Engine development server example
+To clone a sample App Engine application and run it on the App Engine development server:
+
+git clone https://github.com/GoogleCloudPlatform/appengine-guestbook-python \
+    && cd appengine-guestbook-python \
+    && dev_appserver.py ./app.yaml
+
+The development server runs on port 8080 by default.
+
+Previewing the application
+Click the Web Preview button Web Preview Button and then select the port number from the displayed menu. Cloud Shell opens the preview URL on its proxy service in a new browser window.
